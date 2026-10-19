@@ -1,78 +1,52 @@
-\# Library API – Thư viện số Khoa CNTT
+# Library API – Thư viện số Khoa CNTT
 
-
-
-\## 1. Giới thiệu
+## 1. Giới thiệu
 
 Dự án xây dựng Web API quản lý sách bằng FastAPI, hỗ trợ xem danh sách, tìm kiếm, phân trang, thêm, cập nhật và xóa sách.
 
+## 2. Công nghệ
 
+- Python
+- FastAPI
+- Pydantic
+- Postman
 
-\## 2. Công nghệ
+## 3. Cài đặt và chạy
 
-\- Python
-
-\- FastAPI
-
-\- Pydantic
-
-\- Postman
-
-
-
-\## 3. Cài đặt và chạy
-
-Kích hoạt môi trường ảo trên Windows:
-
-
+Mở PowerShell tại thư mục dự án và kích hoạt môi trường ảo trên Windows:
 
 ```powershell
-
-.\\.venv\\Scripts\\Activate.ps1
-
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-
 uvicorn app.main:app --reload
-
 ```
 
+Mở tài liệu API tại: http://127.0.0.1:8000/docs
 
-
-Mở tài liệu API: http://127.0.0.1:8000/docs
-
-
-
-\## 4. Các endpoint
-
-
+## 4. Các endpoint
 
 | Phương thức | Endpoint | Chức năng |
-
 |---|---|---|
+| GET | `/health` | Kiểm tra API |
+| GET | `/books` | Danh sách, tìm kiếm và phân trang |
+| GET | `/books/{id}` | Chi tiết sách |
+| POST | `/books` | Thêm sách |
+| PUT | `/books/{id}` | Cập nhật toàn bộ sách |
+| PATCH | `/books/{id}` | Cập nhật một phần |
+| DELETE | `/books/{id}` | Xóa sách |
 
-| GET | /health | Kiểm tra API |
+## 5. Kiểm thử bằng Postman
 
-| GET | /books | Danh sách, tìm kiếm và phân trang |
+1. Mở Collection `Library API` trong thư mục `postman/`.
+2. Import Environment `Library-Local`.
+3. Đặt `baseUrl` thành `http://localhost:8000`.
+4. Khởi động API bằng Uvicorn.
+5. Chạy toàn bộ 12 test case theo thứ tự từ TC01 đến TC12 bằng Collection Runner.
 
-| GET | /books/{id} | Chi tiết sách |
+## 6. Ảnh minh chứng
 
-| POST | /books | Thêm sách |
+Các ảnh minh chứng được lưu trong thư mục `docs/`:
 
-| PUT | /books/{id} | Cập nhật toàn bộ sách |
-
-| PATCH | /books/{id} | Cập nhật một phần |
-
-| DELETE | /books/{id} | Xóa sách |
-
-
-
-\## 5. Kiểm thử bằng Postman
-
-Mở Postman Collection trong thư mục `postman/`, đặt `baseUrl` thành `http://localhost:8000` và chạy Collection Runner.
-
-
-
-\## 6. Ảnh minh chứng
-
-Ảnh Swagger và kết quả Postman Runner được lưu trong thư mục `docs/` nếu đã được tạo.
-
+- `swagger.png`: giao diện tài liệu API Swagger.
+- `postman_runner.png`: kết quả chạy Postman Runner.
+- `postman2_runner.png`: ảnh kết quả Postman Runner bổ sung.
